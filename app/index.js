@@ -1,6 +1,5 @@
 var React = require('react');
 var ReactDOM = require('react-dom');
-var PropTypes = React.PropTypes;
-var HelloWorld = require('./visuals/Main');
+var routesConfig = require('./routes/config');
 
-ReactDOM.render(<HelloWorld />, document.getElementById('app'));
+ReactDOM.render(routesConfig, document.getElementById('app'));

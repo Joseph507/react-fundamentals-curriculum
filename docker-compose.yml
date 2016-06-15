@@ -1,0 +1,13 @@
+# docker-compose run web npm install
+version: '2'
+services:
+  web:
+    container_name: react-fundamental-curriculum
+    build: .
+    command: npm start
+    volumes:
+      - .:/myapp
+    ports:
+      - "3000:3000"
+
+#npm install --save react react-dom && npm install --save-dev html-webpack-plugin webpack webpack-dev-server babel-{core,loader} babel-preset-react

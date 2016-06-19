@@ -8,7 +8,7 @@ var IndexRoute = ReactRouter.IndexRoute;
 var browserHistory = ReactRouter.browserHistory;
 
 var Main = require('../visuals/Main');
-var Home = require('../visuals/Home');
+var Home = require('../visuals/HomeContainer');
 
 var routes = (
   <Router history={browserHistory}>

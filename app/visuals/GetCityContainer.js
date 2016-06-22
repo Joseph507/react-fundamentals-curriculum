@@ -11,13 +11,26 @@ var GetCityContainer = React.createClass({
   propTypes: {
     direction: PropTypes.string
   },
+  contextTypes:{
+      router: React.PropTypes.object.isRequired
+  },
   getInitialState: function () {
     return {
       city: ''
     }
   },
   handleSubmitCity: function () {
-    console.log(this.state.city)
+    var city = this.state.city;
+    // console.log('Hello');
+    // console.log(city);
+    // helpers.getWeatherInfo(city);
+    this.context.router.push({
+              pathname: '/forecast/'+city
+              // query: {},
+              // state:{
+              //   city: city
+              // }
+          });
   },
   handleUpdateCity: function (e) {
     this.setState({

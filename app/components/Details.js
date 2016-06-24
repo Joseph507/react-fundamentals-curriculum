@@ -36,52 +36,47 @@ var styles = {
   },
   weather: {
     height: 130
-  }
+  },
+  descriptionContainer: {
+  fontSize: 34,
+  fontWeight: 100,
+  maxWidth: 400,
+  margin: '0 auto',
+  textAlign: 'center',
+}
 }
 
 function DayItem (props) {
-  var date = getDate(props.day.dt);
-  var icon = props.day.weather[0].icon;
+  console.log(props);
+  var date = getDate(props.dt);
+  var icon = props.weather[0].icon;
   return (
     <div style={styles.dayContainer} onClick={props.onClickDetails}>
       <img style={styles.weather} src={'./app/images/weather-icons/' + icon + '.svg'} alt='Weather' />
       <h2 style={styles.subheader}>{date}</h2>
-    </div>
-  )
-}
-
-function ForecastUI (props) {
-  return (
-    <div>
-      <h1 style={styles.header}>{props.city}</h1>
-      <div style={styles.container}>
-        {props.forecast.list.map(function (listItem) {
-          return <DayItem key={listItem.dt} day={listItem} onClickDetails={props.onClickDetails.bind(null, listItem)}/>
-        })}
+      <div style={styles.descriptionContainer}>
+        <p>{props.city}</p>
+        <p>{props.weather[0].description}</p>
+        <p>min temp: {convertTemp(props.temp.min)} degrees</p>
+        <p>max temp: {convertTemp(props.temp.max)} degrees</p>
+        <p>humidity: {props.humidity}</p>
       </div>
     </div>
   )
 }
 
-var Results = React.createClass({
+var Details = React.createClass({
 
   render: function() {
-    if (this.props.isLoading === true)
-    {
-      return (
-        <Loading />
-      )
-    }else {
-      return ForecastUI(this.props)
-    }
+    return DayItem(this.props.city)
   }
 
 });
 
-Results.propTypes = {
-  isLoading: PropTypes.bool.isRequired,
-  city: PropTypes.string.isRequired,
-  forecast: PropTypes.object.isRequired,
-  onClickDetails: PropTypes.func.isRequired
-}
-module.exports = Results;
+// Details.propTypes = {
+//   isLoading: PropTypes.bool.isRequired,
+//   city: PropTypes.string.isRequired,
+//   forecast: PropTypes.object.isRequired,
+//   onClickDetails: PropTypes.func.isRequired
+// }
+module.exports = Details;

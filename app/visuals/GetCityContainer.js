@@ -21,16 +21,9 @@ var GetCityContainer = React.createClass({
   },
   handleSubmitCity: function () {
     var city = this.state.city;
-    // console.log('Hello');
-    // console.log(city);
-    // helpers.getWeatherInfo(city);
     this.context.router.push({
               pathname: '/forecast/'+city
-              // query: {},
-              // state:{
-              //   city: city
-              // }
-          });
+    });
   },
   handleUpdateCity: function (e) {
     this.setState({

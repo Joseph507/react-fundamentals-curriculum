@@ -10,12 +10,14 @@ var browserHistory = ReactRouter.hashHistory;
 var Main = require('../visuals/Main');
 var Home = require('../visuals/HomeContainer');
 var Forecast = require('../visuals/ForecastContainer');
+var Details = require('../visuals/DetailsContainer');
 
 var routes = (
   <Router history={browserHistory}>
     <Route path='/' component={Main}>
       <IndexRoute component={Home} />
       <Route path='forecast/:city' component={Forecast} />
+      <Route path='details/:city' component={Details} />
   </Route>
   </Router>
 );

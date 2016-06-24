@@ -10,7 +10,7 @@ function getCurrentWeather (city) {
 }
 
 function getWeatherForecast(city) {
-  return axios.get('http://api.openweathermap.org/data/2.5/forecast/daily?/q='+ city +'&cnt=5&appid=438b9bb8ef30cbf3934c6bed3ff483ff');
+  return axios.get('http://api.openweathermap.org/data/2.5/forecast/daily?q='+ city +'&cnt=5&appid=438b9bb8ef30cbf3934c6bed3ff483ff');
 }
 
 var helpers = {
@@ -22,6 +22,13 @@ var helpers = {
       })
     })
     .catch(function (err) {console.warn('Error in getPlayersInfo: ', err)})
+  },
+  getForcast: function (city) {
+    return getWeatherForecast(city).then(function (info) {
+      console.log(info.data);
+      return info.data;
+    })
+    .catch(function (err) {console.warn('Error in getForcast: ', err)})
   }
 };
 
